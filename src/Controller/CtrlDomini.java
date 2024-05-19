@@ -1,7 +1,7 @@
-package Controller;
+package src.Controller;
 
-import Model.Figura;
-import Model.Partida;
+import src.Model.Figura;
+import src.Model.Partida;
 
 public class CtrlDomini {
 

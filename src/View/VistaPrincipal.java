@@ -1,6 +1,6 @@
-package View;
+package src.View;
 
-import Controller.CtrlPresentacio;
+import src.Controller.CtrlPresentacio;
 
 import javax.swing.*;
 

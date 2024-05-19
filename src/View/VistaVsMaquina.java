@@ -1,7 +1,7 @@
-package View;
+package src.View;
 
-import Controller.CtrlPresentacio;
-import Model.Figura;
+import src.Controller.CtrlPresentacio;
+import src.Model.Figura;
 
 import javax.swing.*;
 import java.util.Random;

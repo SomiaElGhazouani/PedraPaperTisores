@@ -1,8 +1,8 @@
-package Controller;
+package src.Controller;
 
-import Model.Figura;
-import View.VistaPrincipal;
-import View.VistaVsMaquina;
+import src.Model.Figura;
+import src.View.VistaPrincipal;
+import src.View.VistaVsMaquina;
 
 public class CtrlPresentacio {
 
