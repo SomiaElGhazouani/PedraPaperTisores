@@ -22,9 +22,9 @@ public class VistaPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         sortirButton.addActionListener(actionEvent -> System.exit(0));
-        jugarVsIAButton.addActionListener(actionEvent -> ctrlPresentacio.jugarVsIA());
-//        jugar1Vs1Button.addActionListener(actionEvent -> cp.syncVP_VM());
-//        repositoriButton.addActionListener(actionEvent -> cp.obreManual());
+        jugarVsIAButton.addActionListener(actionEvent -> ctrlPresentacio.vistaJugarVsIA());
+        jugar1Vs1Button.addActionListener(actionEvent -> ctrlPresentacio.vistaJugar1vs1());
+//        repositoriButton.addActionListener(actionEvent -> cp.obreLink());
     }
 
     public void activar() {

@@ -22,16 +22,13 @@ public class VistaVsMaquina extends JFrame {
     public VistaVsMaquina(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
 
-        puntuacioJ1.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
-        puntuacioIA.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
-
         add(IAPanel);
         setTitle("Joc de pedra paper tisores");
         setSize(800, 550);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        sortirButton.addActionListener(actionEvent -> System.exit(0));
+        sortirButton.addActionListener(actionEvent -> desactivar());
         resetButton.addActionListener(actionEvent -> reiniciarPuntuacion());
         tisoresButton.addActionListener(actionEvent -> jugarRonda(Figura.TISORES));
         pedraButton.addActionListener(actionEvent -> jugarRonda(Figura.PEDRA));
@@ -40,7 +37,7 @@ public class VistaVsMaquina extends JFrame {
 
     public void jugarRonda(Figura figuraJugador1) {
         Figura figuraIA = Figura.values()[new Random().nextInt(Figura.values().length)];
-        ctrlPresentacio.jugador1vsIA(figuraJugador1, figuraIA);
+        ctrlPresentacio.jugarRonda(figuraJugador1, figuraIA);
 
 
         String pathFiguraIA = "resources/" + figuraIA.toString().toLowerCase() + ".png";
@@ -60,10 +57,13 @@ public class VistaVsMaquina extends JFrame {
 
     public void activar() {
         setVisible(true);
+        puntuacioJ1.setText("0");
+        puntuacioIA.setText("0");
     }
 
     public void desactivar() {
         setVisible(false);
+        ctrlPresentacio.start();
     }
 
     private void reiniciarPuntuacion() {

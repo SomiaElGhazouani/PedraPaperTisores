@@ -2,37 +2,45 @@ package src.Model;
 
 public class Partida {
 
-    private String primerJugador;
-    private String segonJugador;
+    private String nomPrimerJugador;
+    private String nomSegonJugador;
     private int puntuacioJ1;
     private int puntuacioJ2;
     private int rondes;
 
-    public Partida(String primerJugador, String segonJugador, int rondes) {
-        this.primerJugador = primerJugador;
-        this.primerJugador = segonJugador;
-        this.puntuacioJ1 =  this.puntuacioJ2 = 0;
-        this.rondes = rondes;
-    }
-
     public Partida() {
-        this.puntuacioJ1 =  this.puntuacioJ2 = 0;
+        this.puntuacioJ1 = this.puntuacioJ2 = 0;
     }
 
-    public void setPrimerJugador(String primerJugador) {
-        this.primerJugador = primerJugador;
+
+    /*
+    Contructor per jugar vs IA.
+     */
+    public Partida(String nomJugador) {
+        this.nomPrimerJugador = nomJugador;
+        this.nomSegonJugador = "Màquina";
+        this.puntuacioJ1 = this.puntuacioJ2 = 0;
     }
 
-    public void setSegonJugador(String segonJugador) {
-        this.segonJugador = segonJugador;
+
+    /*
+    Constructor per jugar 1vs1.
+     */
+    public Partida(String nomPrimerJugador, String nomSegonJugador) {
+        this.nomPrimerJugador = nomPrimerJugador;
+        this.nomSegonJugador = nomSegonJugador;
+        this.puntuacioJ1 = this.puntuacioJ2 = 0;
     }
 
-    public String getPrimerJugador() {
-        return primerJugador;
-    }
 
-    public String getSegonJugador() {
-        return segonJugador;
+    /*
+    Contructor per introduir numero de rondes
+     */
+    public Partida(String nomPrimerJugador, String nomSegonJugador, int rondes) {
+        this.nomPrimerJugador = nomPrimerJugador;
+        this.nomPrimerJugador = nomSegonJugador;
+        this.puntuacioJ1 = this.puntuacioJ2 = 0;
+        this.rondes = rondes;
     }
 
     public int getPuntuacioJ1() {
@@ -44,16 +52,15 @@ public class Partida {
     }
 
     public void sumarPuntacio(int numJugador) {
-        if(numJugador == 1){
+        if (numJugador == 1) {
             this.puntuacioJ1++;
-        }
-        else if (numJugador == 2) {
+        } else if (numJugador == 2) {
             this.puntuacioJ2++;
         }
     }
 
     public void reiniciarPuntuacion() {
-        this.puntuacioJ1 =  this.puntuacioJ2 = 0;
+        this.puntuacioJ1 = this.puntuacioJ2 = 0;
     }
 }
 

@@ -8,16 +8,17 @@ public class CtrlDomini {
     private Partida partida;
 
     public CtrlDomini() {
-        this.partida = new Partida();
     }
 
-    public void partidaVsIA() {
-        this.partida.setPrimerJugador("Jugador 1");
-        this.partida.setSegonJugador("Màquina");
+    public void partidaVsIA(String jugador) {
+        this.partida = new Partida(jugador);
     }
 
+    public void partida1vs1(String nomPrimerJugador, String nomSegonJugador) {
+        this.partida = new Partida(nomPrimerJugador, nomSegonJugador);
+    }
 
-    public void saberGuanyador(Figura jugador1, Figura jugador2) {
+    public void jugarRonda(Figura jugador1, Figura jugador2) {
         switch (jugador1) {
             case PEDRA -> {
                 if (jugador2 == Figura.TISORES) {
