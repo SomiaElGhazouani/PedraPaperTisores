@@ -25,13 +25,13 @@ public class CtrlPresentacio {
 
     public void vistaJugarVsIA() {
         vistaPrincipal.desactivar();
-        ctrlDomini.partidaVsIA("Somia");
+        ctrlDomini.crearPartidaVsIA("Somia");
         vistaVsMaquina.activar();
     }
 
     public void vistaJugar1vs1() {
         vistaPrincipal.desactivar();
-        ctrlDomini.partida1vs1("Somia", "Jugador 2");
+        ctrlDomini.crearPartida1vs1("Somia", "Jugador 2");
         vistaVsJugador.activar();
     }
 

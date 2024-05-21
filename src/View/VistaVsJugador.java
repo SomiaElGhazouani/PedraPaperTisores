@@ -4,7 +4,6 @@ import src.Controller.CtrlPresentacio;
 import src.Model.Figura;
 
 import javax.swing.*;
-import java.util.Random;
 
 public class VistaVsJugador extends JFrame {
 
@@ -15,21 +14,20 @@ public class VistaVsJugador extends JFrame {
     private JButton sortirButton;
     private JButton resetButton;
     private JPanel J1vsJ2Panel;
-    private JLabel puntuacioJ1;
-    private JLabel puntuacioJ2;
+    private JLabel puntuacioJ1Label;
+    private JLabel puntuacioJ2Label;
     private JLabel figuraJ1Label;
     private JLabel figuraJ2Label;
-    private JLabel ronda;
+    private JLabel aQuiLiTocaLabel;
     private boolean turn;
-
-    private Figura figuraAnterior;
+    private Figura figuraJugador1;
 
 
     public VistaVsJugador(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
         turn = false;
 
-        ronda.setText("Li toca al jugador 1");
+        aQuiLiTocaLabel.setText("Li toca al jugador 1");
 
         add(J1vsJ2Panel);
         setTitle("Joc de pedra paper tisores");
@@ -46,47 +44,33 @@ public class VistaVsJugador extends JFrame {
 
     public void jugarRonda(Figura figuraSelecionada) {
         if (turn) {
-            turn = false;
-            ctrlPresentacio.jugarRonda(figuraAnterior, figuraSelecionada);
+            ctrlPresentacio.jugarRonda(figuraJugador1, figuraSelecionada);
 
             String pathFiguraJ2 = "resources/" + figuraSelecionada.toString().toLowerCase() + ".png";
             figuraJ2Label.setIcon(new ImageIcon(pathFiguraJ2));
             figuraJ2Label.repaint();
 
-            String pathFiguraJ1 = "resources/" + figuraAnterior.toString().toLowerCase() + ".png";
+            String pathFiguraJ1 = "resources/" + figuraJugador1.toString().toLowerCase() + ".png";
             figuraJ1Label.setIcon(new ImageIcon(pathFiguraJ1));
             figuraJ1Label.repaint();
 
 
-            puntuacioJ1.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
-            puntuacioJ2.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
-            ronda.setText("Li toca al jugador 1");
+            puntuacioJ1Label.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
+            puntuacioJ2Label.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
+            aQuiLiTocaLabel.setText("Li toca al jugador 1");
+            turn = false;
         } else {
+            figuraJugador1 = figuraSelecionada;
+            aQuiLiTocaLabel.setText("Li toca al jugador 2");
             turn = true;
-            figuraAnterior = figuraSelecionada;
-            ronda.setText("Li toca al jugador 2");
         }
-
-//        ctrlPresentacio.jugador1vsIA(figuraJugador1, figuraJ2Label);
-//
-//
-//        String pathFiguraJ2 = "resources/" + figuraJ2Label.toString().toLowerCase() + ".png";
-//        figuraJ2Label.setIcon(new ImageIcon(pathFiguraJ2));
-//        figuraJ2Label.repaint();
-//
-//        String pathFiguraJ1 = "resources/" + figuraJugador1.toString().toLowerCase() + ".png";
-//        figuraJ1Label.setIcon(new ImageIcon(pathFiguraJ1));
-//        figuraJ1Label.repaint();
-//
-//
-//        puntuacioJ1.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
-//        puntuacioJ2.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
     }
 
     public void activar() {
         setVisible(true);
-        puntuacioJ1.setText("0");
-        puntuacioJ2.setText("0");
+        turn = false;
+        puntuacioJ1Label.setText("0");
+        puntuacioJ2Label.setText("0");
     }
 
     public void desactivar() {
@@ -98,8 +82,8 @@ public class VistaVsJugador extends JFrame {
     private void reiniciarPuntuacion() {
         ctrlPresentacio.reiniciarPuntuacion();
         turn = false;
-        puntuacioJ1.setText("0");
-        puntuacioJ2.setText("0");
+        puntuacioJ1Label.setText("0");
+        puntuacioJ2Label.setText("0");
     }
 
     private void createUIComponents() {

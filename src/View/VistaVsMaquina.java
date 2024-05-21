@@ -14,8 +14,8 @@ public class VistaVsMaquina extends JFrame {
     private JButton sortirButton;
     private JButton resetButton;
     private JPanel IAPanel;
-    private JLabel puntuacioJ1;
-    private JLabel puntuacioIA;
+    private JLabel puntuacioJ1Label;
+    private JLabel puntuacioIALabel;
     private JLabel figuraJ1Label;
     private JLabel figuraIALabel;
 
@@ -42,23 +42,21 @@ public class VistaVsMaquina extends JFrame {
 
         String pathFiguraIA = "resources/" + figuraIA.toString().toLowerCase() + ".png";
         figuraIALabel.setIcon(new ImageIcon(pathFiguraIA));
-        //figuraIALabel.revalidate();
         figuraIALabel.repaint();
 
         String pathFiguraJ1 = "resources/" + figuraJugador1.toString().toLowerCase() + ".png";
         figuraJ1Label.setIcon(new ImageIcon(pathFiguraJ1));
-        //figuraJ1Label.revalidate();
         figuraJ1Label.repaint();
 
 
-        puntuacioJ1.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
-        puntuacioIA.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
+        puntuacioJ1Label.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
+        puntuacioIALabel.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
     }
 
     public void activar() {
         setVisible(true);
-        puntuacioJ1.setText("0");
-        puntuacioIA.setText("0");
+        puntuacioJ1Label.setText("0");
+        puntuacioIALabel.setText("0");
     }
 
     public void desactivar() {
@@ -68,8 +66,8 @@ public class VistaVsMaquina extends JFrame {
 
     private void reiniciarPuntuacion() {
         ctrlPresentacio.reiniciarPuntuacion();
-        puntuacioJ1.setText("0");
-        puntuacioIA.setText("0");
+        puntuacioJ1Label.setText("0");
+        puntuacioIALabel.setText("0");
     }
 
     private void createUIComponents() {

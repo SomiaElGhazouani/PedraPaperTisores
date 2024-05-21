@@ -10,14 +10,17 @@ public class CtrlDomini {
     public CtrlDomini() {
     }
 
-    public void partidaVsIA(String jugador) {
-        this.partida = new Partida(jugador);
+    public void crearPartidaVsIA(String nomJugador) {
+        this.partida = new Partida(nomJugador);
     }
 
-    public void partida1vs1(String nomPrimerJugador, String nomSegonJugador) {
+    public void crearPartida1vs1(String nomPrimerJugador, String nomSegonJugador) {
         this.partida = new Partida(nomPrimerJugador, nomSegonJugador);
     }
 
+    /*
+    en cas d'haverhi un guanyador li suma la seva puntuació
+     */
     public void jugarRonda(Figura jugador1, Figura jugador2) {
         switch (jugador1) {
             case PEDRA -> {
