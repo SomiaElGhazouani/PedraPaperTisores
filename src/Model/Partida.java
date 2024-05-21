@@ -6,7 +6,6 @@ public class Partida {
     private String nomSegonJugador;
     private int puntuacioJ1;
     private int puntuacioJ2;
-    private int rondes;
 
     public Partida() {
         this.puntuacioJ1 = this.puntuacioJ2 = 0;
@@ -30,17 +29,6 @@ public class Partida {
         this.nomPrimerJugador = nomPrimerJugador;
         this.nomSegonJugador = nomSegonJugador;
         this.puntuacioJ1 = this.puntuacioJ2 = 0;
-    }
-
-
-    /*
-    Contructor per introduir numero de rondes
-     */
-    public Partida(String nomPrimerJugador, String nomSegonJugador, int rondes) {
-        this.nomPrimerJugador = nomPrimerJugador;
-        this.nomPrimerJugador = nomSegonJugador;
-        this.puntuacioJ1 = this.puntuacioJ2 = 0;
-        this.rondes = rondes;
     }
 
     public int getPuntuacioJ1() {

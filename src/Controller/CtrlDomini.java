@@ -10,16 +10,25 @@ public class CtrlDomini {
     public CtrlDomini() {
     }
 
+    /**
+     * S'utilitzarà el constructor de Partida d'un parametre, el segon jugador es dirà "Màquina", el primer es dirà Somia.
+     * @param nomJugador del primer jugador
+     */
     public void crearPartidaVsIA(String nomJugador) {
         this.partida = new Partida(nomJugador);
     }
 
+    /**
+     * S'utilitzarà el constructo de Partida de 2 paràmetres, noms dels dos jugadors
+     * @param nomPrimerJugador
+     * @param nomSegonJugador
+     */
     public void crearPartida1vs1(String nomPrimerJugador, String nomSegonJugador) {
         this.partida = new Partida(nomPrimerJugador, nomSegonJugador);
     }
 
-    /*
-    en cas d'haverhi un guanyador li suma la seva puntuació
+    /**
+     * Suma puntació al guanyador en cas d'haver-hi.
      */
     public void jugarRonda(Figura jugador1, Figura jugador2) {
         switch (jugador1) {
@@ -51,6 +60,11 @@ public class CtrlDomini {
 
     }
 
+    /**
+     *
+     * @param numJugador numero del jugador de qui volem la puntuacio.
+     * @return retorna la puntuació del jugador passat per paràmetre, 1 o 2. Si és altre número, retorna 0.
+     */
     public int getPuntuacioJugardor(int numJugador) {
         if (numJugador == 1) {
             return partida.getPuntuacioJ1();
@@ -61,6 +75,9 @@ public class CtrlDomini {
         return 0;
     }
 
+    /**
+     * Assigna 0 a les dos puntuacions.
+     */
     public void reiniciarPuntuacion() {
         partida.reiniciarPuntuacion();
     }

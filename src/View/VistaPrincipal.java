@@ -3,6 +3,8 @@ package src.View;
 import src.Controller.CtrlPresentacio;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class VistaPrincipal extends JFrame {
 
@@ -13,6 +15,10 @@ public class VistaPrincipal extends JFrame {
     private JButton sortirButton;
     private JButton repositoriButton;
 
+    /**
+     * Constructor de VistaPrincipal
+     * @param ctrlPresentacio bidireccional
+     */
     public VistaPrincipal(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
         add(mainPanel);
@@ -21,16 +27,30 @@ public class VistaPrincipal extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Botons amb actionListener, pendents d'acció / esdeveniment.
         sortirButton.addActionListener(actionEvent -> System.exit(0));
-        jugarVsIAButton.addActionListener(actionEvent -> ctrlPresentacio.vistaJugarVsIA());
-        jugar1Vs1Button.addActionListener(actionEvent -> ctrlPresentacio.vistaJugar1vs1());
-//        repositoriButton.addActionListener(actionEvent -> cp.obreLink());
+        jugarVsIAButton.addActionListener(actionEvent -> this.ctrlPresentacio.activaVistaJugarVsIA());
+        jugar1Vs1Button.addActionListener(actionEvent -> this.ctrlPresentacio.activaVistaJugar1vs1());
+        // Obrir link en cas de donar-li al botó Repositori.
+        repositoriButton.addActionListener(actionEvent -> {
+            try {
+                this.ctrlPresentacio.obrirLink("https://github.com/SomiaElGhazouani/PedraPaperTisores");
+            } catch (IOException | URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
+    /**
+     * Mostra la vista Principal
+     */
     public void activar() {
         setVisible(true);
     }
 
+    /**
+     * Oculta la vista Principal
+     */
     public void desactivar() {
         setVisible(false);
     }

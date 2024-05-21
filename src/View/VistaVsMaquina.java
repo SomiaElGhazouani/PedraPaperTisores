@@ -28,18 +28,27 @@ public class VistaVsMaquina extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Botons amb actionListener, pendents d'acció / esdeveniment.
         sortirButton.addActionListener(actionEvent -> desactivar());
         resetButton.addActionListener(actionEvent -> reiniciarPuntuacion());
+        // Si es clica una botó d'alguna figura, es jugarà una ronda:
         tisoresButton.addActionListener(actionEvent -> jugarRonda(Figura.TISORES));
         pedraButton.addActionListener(actionEvent -> jugarRonda(Figura.PEDRA));
         paperButton.addActionListener(actionEvent -> jugarRonda(Figura.PAPER));
     }
 
+
+    /**
+     *
+     * @param figuraJugador1 la figura seleccionada per la Somia
+     */
     public void jugarRonda(Figura figuraJugador1) {
+        // Obtenim una figura random que serà la figura de la màquina
         Figura figuraIA = Figura.values()[new Random().nextInt(Figura.values().length)];
         ctrlPresentacio.jugarRonda(figuraJugador1, figuraIA);
 
 
+        // Mostrar les figures imatges:
         String pathFiguraIA = "resources/" + figuraIA.toString().toLowerCase() + ".png";
         figuraIALabel.setIcon(new ImageIcon(pathFiguraIA));
         figuraIALabel.repaint();
@@ -48,17 +57,25 @@ public class VistaVsMaquina extends JFrame {
         figuraJ1Label.setIcon(new ImageIcon(pathFiguraJ1));
         figuraJ1Label.repaint();
 
-
+        // Actualitzar puntuació
         puntuacioJ1Label.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(1)));
         puntuacioIALabel.setText(String.valueOf(this.ctrlPresentacio.getPuntuacioJugador(2)));
     }
 
+
+    /**
+     * Mostra la vista jugador vs màquina i puntuació a 0 en els Labels.
+     */
     public void activar() {
         setVisible(true);
         puntuacioJ1Label.setText("0");
         puntuacioIALabel.setText("0");
     }
 
+
+    /**
+     * Desactiva la vista jugador vs màquina i es mostrará VistaPrincipal gracies a ctrlPresentacio
+     */
     public void desactivar() {
         setVisible(false);
         ctrlPresentacio.start();
@@ -70,6 +87,10 @@ public class VistaVsMaquina extends JFrame {
         puntuacioIALabel.setText("0");
     }
 
+
+    /**
+     * Funció auxiliar per iniciar les imatges a null.
+     */
     private void createUIComponents() {
         figuraIALabel = new JLabel();
         figuraJ1Label = new JLabel();
